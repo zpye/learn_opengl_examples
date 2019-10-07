@@ -10,3 +10,5 @@ GLFW：[https://www.glfw.org/](https://www.glfw.org/)
 
 GLM：[https://github.com/g-truc/glm](https://github.com/g-truc/glm)
 
+ASSIMP：[https://github.com/assimp/assimp](https://github.com/assimp/assimp)
+

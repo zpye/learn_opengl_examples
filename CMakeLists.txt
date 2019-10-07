@@ -19,6 +19,16 @@ set_target_properties(glad PROPERTIES FOLDER "GLAD")
 
 set(GL_LIBS glm_static glad glfw)
 
+option(BUILD_ASSIMP "build Open Asset Import Library" OFF)
+if(BUILD_ASSIMP)
+    add_subdirectory(assimp)
+    set_target_properties(assimp PROPERTIES FOLDER "ASSIMP")
+    set_target_properties(IrrXML PROPERTIES FOLDER "ASSIMP")
+    set_target_properties(zlib PROPERTIES FOLDER "ASSIMP")
+    set_target_properties(zlibstatic PROPERTIES FOLDER "ASSIMP")
+    list(APPEND GL_LIBS assimp)
+endif(BUILD_ASSIMP)
+
 # options
 add_compile_options(-DSHADER_PATH="${CMAKE_SOURCE_DIR}")
 add_compile_options(-DGLFW_INCLUDE_NONE)
@@ -47,5 +57,8 @@ target_link_libraries(5_transformations ${GL_LIBS})
 add_executable(6_coordinate_systems_multiple 6_coordinate_systems_multiple.cpp shader_m.h stb_image.h)
 target_link_libraries(6_coordinate_systems_multiple ${GL_LIBS})
 
-add_executable(7_camera_class 7_camera_class.cpp shader_m.h stb_image.h)
+add_executable(7_camera_class 7_camera_class.cpp camera.h shader_m.h stb_image.h)
 target_link_libraries(7_camera_class ${GL_LIBS})
+
+add_executable(8_basic_lighting_specular 8_basic_lighting_specular.cpp camera.h shader_m.h)
+target_link_libraries(8_basic_lighting_specular ${GL_LIBS})
