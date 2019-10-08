@@ -30,7 +30,7 @@ if(BUILD_ASSIMP)
 endif(BUILD_ASSIMP)
 
 # options
-add_compile_options(-DSHADER_PATH="${CMAKE_SOURCE_DIR}")
+add_compile_options(-DSHADER_PATH="${CMAKE_SOURCE_DIR}/resources")
 add_compile_options(-DGLFW_INCLUDE_NONE)
 
 include_directories(${CMAKE_SOURCE_DIR})
@@ -62,3 +62,14 @@ target_link_libraries(7_camera_class ${GL_LIBS})
 
 add_executable(8_basic_lighting_specular 8_basic_lighting_specular.cpp camera.h shader_m.h)
 target_link_libraries(8_basic_lighting_specular ${GL_LIBS})
+
+add_executable(9_materials 9_materials.cpp camera.h shader_m.h)
+target_link_libraries(9_materials ${GL_LIBS})
+
+add_executable(10_multiple_lights 10_multiple_lights.cpp camera.h shader_m.h stb_image.h)
+target_link_libraries(10_multiple_lights ${GL_LIBS})
+
+if(BUILD_ASSIMP)
+    add_executable(11_model_loading 11_model_loading.cpp camera.h shader.h model.h mesh.h stb_image.h)
+    target_link_libraries(11_model_loading ${GL_LIBS})
+endif(if(BUILD_ASSIMP))
