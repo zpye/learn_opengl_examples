@@ -69,6 +69,9 @@ target_link_libraries(9_materials ${GL_LIBS})
 add_executable(10_multiple_lights 10_multiple_lights.cpp camera.h shader_m.h stb_image.h)
 target_link_libraries(10_multiple_lights ${GL_LIBS})
 
+add_executable(12_geometry_shader_houses 12_geometry_shader_houses.cpp shader.h)
+target_link_libraries(12_geometry_shader_houses ${GL_LIBS})
+
 if(BUILD_ASSIMP)
     add_executable(11_model_loading 11_model_loading.cpp camera.h shader.h model.h mesh.h stb_image.h)
     target_link_libraries(11_model_loading ${GL_LIBS})
